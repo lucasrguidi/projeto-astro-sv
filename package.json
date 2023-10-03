@@ -10,6 +10,19 @@
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^3.2.2"
+    "@astrojs/node": "^6.0.2",
+    "@astrojs/react": "^3.0.2",
+    "@photo-sphere-viewer/compass-plugin": "^5.4.3",
+    "@photo-sphere-viewer/core": "^5.4.3",
+    "@types/react": "^18.2.24",
+    "@types/react-dom": "^18.2.8",
+    "astro": "^3.2.2",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "three": "^0.157.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.50.0",
+    "eslint-plugin-astro": "^0.29.1"
   }
 }

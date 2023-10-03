@@ -1,0 +1,10 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DynamicMap from '../components/DynamicMap';
+
+const { team } = Astro.params;
+---
+
+<Layout title={team}>
+  <DynamicMap client:only='react' team={team} />
+</Layout>
