@@ -12,8 +12,11 @@
   "dependencies": {
     "@astrojs/node": "^6.0.2",
     "@astrojs/react": "^3.0.2",
+    "@photo-sphere-viewer/autorotate-plugin": "^5.4.3",
     "@photo-sphere-viewer/compass-plugin": "^5.4.3",
     "@photo-sphere-viewer/core": "^5.4.3",
+    "@photo-sphere-viewer/map-plugin": "^5.4.3",
+    "@photo-sphere-viewer/markers-plugin": "^5.4.3",
     "@types/react": "^18.2.24",
     "@types/react-dom": "^18.2.8",
     "astro": "^3.2.2",

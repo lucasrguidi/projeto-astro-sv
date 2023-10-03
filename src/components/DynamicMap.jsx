@@ -1,14 +1,23 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
+
 import { Viewer } from '@photo-sphere-viewer/core';
 import '@photo-sphere-viewer/core/index.css';
+
+import { MarkersPlugin } from '@photo-sphere-viewer/markers-plugin';
+import '@photo-sphere-viewer/markers-plugin/index.css';
+
+import { AutorotatePlugin } from '@photo-sphere-viewer/autorotate-plugin';
+
 import teamsData from '../assets/teamsData.json';
 
 const DyamicMap = ({ team }) => {
-  const [teamData, setTeamData] = useState({});
+  const [teamData, setTeamData] = useState(null);
   const loadingImg =
     'https://photo-sphere-viewer-data.netlify.app/assets/loader.gif';
   const BUTTON_ID = 'panel-button';
   const PANEL_ID = 'custom-panel';
+  const viewerMonted = useRef(false);
+  const polygonMarkerMonted = useRef(false);
 
   const lang = {
     zoom: 'Zoom',
@@ -34,15 +43,14 @@ const DyamicMap = ({ team }) => {
     }
 
     getTeamData();
-  }, [team]); 
-
+  }, [team]);
 
   useEffect(() => {
-    if (teamData) {
-      console.log('teste')
+    if (!viewerMonted.current && teamData) {
       const viewer = new Viewer({
         container: 'viewer',
         panorama: teamData.panorama,
+        caption: teamData.caption,
         lang,
         defaultZoomLvl: 0,
         loadingImg,
@@ -51,6 +59,7 @@ const DyamicMap = ({ team }) => {
         navbar: [
           'zoom',
           'fullscreen',
+          'caption',
           {
             id: BUTTON_ID,
             title: 'Informações',
@@ -66,7 +75,80 @@ const DyamicMap = ({ team }) => {
             },
           },
         ],
+        plugins: [
+          [
+            AutorotatePlugin,
+            {
+              autostartDelay: 2000,
+              autorotateSpeed: '1rpm',
+            },
+          ],
+          [MarkersPlugin],
+        ],
       });
+
+      viewerMonted.current = true;
+
+      const markersPlugin = viewer.getPlugin(MarkersPlugin);
+      // Add pin
+      viewer.addEventListener('click', ({ data }) => {
+        if (!data.rightclick) {
+          markersPlugin.addMarker({
+            id: '#' + Math.random(),
+            position: { yaw: data.yaw, pitch: data.pitch },
+            image: '../../public/assets/pin-red.png',
+            size: { width: 32, height: 32 },
+            anchor: 'bottom center',
+            tooltip: 'Marcador',
+            data: {
+              generated: true,
+            },
+          });
+        }
+      });
+      // Remove pin
+      markersPlugin.addEventListener(
+        'select-marker',
+        ({ marker, doubleClick }) => {
+          if (marker.data?.generated) {
+            if (doubleClick) {
+              markersPlugin.removeMarker(marker);
+            }
+          }
+        }
+      );
+
+      // Create polygon
+      let polygonArray = [];
+      viewer.addEventListener('click', ({ data }) => {
+        if (data.rightclick) {
+          polygonArray.push([data.yaw, data.pitch]);
+
+          if (!polygonMarkerMonted.current) {
+            markersPlugin.addMarker({
+              id: 'test-polygon',
+              position: [data.yaw, data.pitch],
+              polygon: polygonArray,
+              svgStyle: {
+                fill: 'rgba(200, 0, 0, 0.2)',
+                stroke: 'rgba(200, 0, 50, 0.8)',
+                strokeWidth: '2px',
+              },
+              data: {
+                generated: true,
+              },
+            });
+            polygonMarkerMonted.current = true;
+          }
+
+          markersPlugin.updateMarker({
+            id: 'test-polygon',
+            polygon: polygonArray,
+          });
+        }
+      });
+
+      markersPlugin.state.needsReRender = true;
 
       viewer.addEventListener('show-panel', ({ panelId }) => {
         if (panelId === PANEL_ID) {
@@ -79,51 +161,15 @@ const DyamicMap = ({ team }) => {
           viewer.navbar.getButton(BUTTON_ID).toggleActive(false);
         }
       });
-
-      viewer.addEventListener('click', () => {
-        viewer.notification.show({
-          content: 'Dale tigre 🐯🐯',
-          timeout: 750,
-        });
-      });
     }
   }, [teamData]);
 
+  if (!teamData) return;
   return (
     <>
       <div id='viewer' style={{ width: '100vw', height: '100vh' }}></div>;
       <div id='panel-content' style={{ display: 'none' }}>
-        <h1>Estádio Heriberto Hülse</h1>
-
-        <p>
-          O <b>Estádio Heriberto Hülse,</b> apelidado de "Majestoso", é um
-          estádio de futebol localizado na cidade de Criciúma, estado de Santa
-          Catarina, Brasil. O proprietário do estádio é o Criciúma Esporte
-          Clube. É o único estádio de futebol de Santa Catarina com completa
-          cobertura para os torcedores. Atualmente, tem capacidade para 19.225
-          torcedores.
-        </p>
-
-        <p>
-          O estádio do Criciúma Esporte Clube, um dos principais do estado de
-          Santa Catarina, já abrigou competições de nível internacional como a
-          Copa Libertadores da América, época na qual foi completamente adaptado
-          para competição. Destaque entre os principais estádios do estado, é o
-          único completamente coberto.
-        </p>
-
-        <p>
-          O maior público registrado foi em 6 de agosto de 1995 no jogo Criciúma
-          1 x 0 Chapecoense pelo campeonato catarinense. O jogo teve um público
-          de 31.123 presentes.
-        </p>
-
-        <p>
-          O nome do estádio é uma homenagem ao ex-governador do estado de Santa
-          Catarina, Heriberto Hülse, por ser uma figura política que representou
-          o sul Catarinense, onde se situa a cidade de Criciúma, e por sua vez,
-          o Majestoso.
-        </p>
+        {teamData.panelContent}
       </div>
     </>
   );

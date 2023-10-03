@@ -1,9 +1,32 @@
 [
   {
     "name": "criciuma",
-    "panorama": "/@fs/A:/PICHAU/Documents/dev/projeto-astro-sv/src/assets/criciuma.jpg?origWidth=4608&origHeight=2304&origFormat=jpg",
-    "caption": "Estádio Heriberto Hülse - <b>Criciúma SC</b>",
-    "panelContent": "<h1>Estádio Heriberto Hülse</h1><br><p> O <b>Estádio Heriberto Hülse,</b> apelidado de 'Majestoso', é um estádio de futebol localizado na cidade de Criciúma, estado de Santa Catarina, Brasil. O proprietário do estádio é o Criciúma Esporte Clube. É o único estádio de futebol de Santa Catarina com completa cobertura para os torcedores. Atualmente, tem capacidade para 19.225 torcedores. </p><br><p> O estádio do Criciúma Esporte Clube, um dos principais do estado de Santa Catarina, já abrigou competições de nível internacional como a Copa Libertadores da América, época na qual foi completamente adaptado para competição. Destaque entre os principais estádios do estado, é o único completamente coberto. </p><br><p> O maior público registrado foi em 6 de agosto de 1995 no jogo Criciúma 1 x 0 Chapecoense pelo campeonato catarinense. O jogo teve um público de 31.123 presentes. </p><br><p> O nome do estádio é uma homenagem ao ex-governador do estado de Santa Catarina, Heriberto Hülse, por ser uma figura política que representou o sul Catarinense, onde se situa a cidade de Criciúma, e por sua vez, o Majestoso. </p>"
+    "panorama": "../../public/assets/criciuma.jpg",
+    "caption": "Estádio Heriberto Hülse - <b>Criciúma/SC</b>",
+    "panelContent": "O Estádio Heriberto Hülse, apelidado de 'Majestoso', é um estádio de futebol localizado na cidade de Criciúma, estado de Santa Catarina, Brasil. O proprietário do estádio é o Criciúma Esporte Clube. É o único estádio de futebol de Santa Catarina com completa cobertura para os torcedores. Atualmente, tem capacidade para 19.225 torcedores. O estádio do Criciúma Esporte Clube, um dos principais do estado de Santa Catarina, já abrigou competições de nível internacional como a Copa Libertadores da América, época na qual foi completamente adaptado para competição.O maior público registrado foi em 6 de agosto de 1995 no jogo Criciúma 1 x 0 Chapecoense pelo campeonato catarinense. O jogo teve um público de 31.123 presentes."
   },
-  {}
+  {
+    "name": "avai",
+    "panorama": "../../public/assets/avai.jpg",
+    "caption": "Estádio da Ressacada - <b>Florianópolis/SC</b>",
+    "panelContent": "O Estádio Aderbal Ramos da Silva, popularmente conhecido como Estádio da Ressacada, de propriedade do Avaí Futebol Clube, é um estádio de futebol localizado em Florianópolis, capital do estado brasileiro de Santa Catarina. Foi inaugurado em 15 de novembro de 1983, e sua iluminação, em 31 de maio de 1986. Seu recorde de público é de 32.226 (25.735 pagantes) na final do campeonato catarinense de 1988."
+  },
+  {
+    "name": "chapecoense",
+    "panorama": "../../public/assets/chapecoense.jpg",
+    "caption": "Arena Condá - <b>Chapecó/SC</b>",
+    "panelContent": "A Arena Condá é um estádio de futebol localizado no centro da cidade de Chapecó, no estado brasileiro de Santa Catarina. De propriedade da municipalidade, é a sede da Associação Chapecoense de Futebol, onde manda seus jogos. Foi inaugurado em 6 de fevereiro de 1980, quando ainda denominava-se Estádio Regional índio Condá. Atualmente tem capacidade máxima de aproximadamente 21.000 pessoas. A Lei Municipal nº 5.560, de 28 de maio de 2009, alterou o nome do estádio para Arena Condá."
+  },
+  {
+    "name": "figueirense",
+    "panorama": "../../public/assets/figueirense.jpg",
+    "caption": "Estádio Orlando Scarpelli - <b>Florianópolis/SC</b>",
+    "panelContent": "O Estádio Orlando Scarpelli é um estádio de futebol, próprio do Figueirense Futebol Clube e está localizado no bairro Estreito, na parte continental da cidade de Florianópolis, no estado de Santa Catarina. É o maior estádio de futebol de Florianópolis e seu recorde de público foi no amistoso entre Brasil versus Chile em 2000, com 31.098 espectadores. O recorde de público do proprietário foi no jogo do Figueirense contra o Vasco em 1975, com 26.600 torcedores."
+  },
+  {
+    "name": "joinville",
+    "panorama": "../../public/assets/joinville.jpg",
+    "caption": "Arena Joinville - <b>Joinville/SC</b>",
+    "panelContent": "A Arena Joinville, localizada na maior cidade de Santa Catarina, Joinville, é uma arena multiuso municipal, sendo um dos maiores estádios de futebol de Santa Catarina. O local é utilizado pelo Joinville Esporte Clube, Fluminense Futebol Clube e pelo Nação Esportes para mandar os seus jogos. Foi edificada no bairro Bucarein."
+  }
 ]

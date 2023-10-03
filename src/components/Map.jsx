@@ -3,7 +3,7 @@ import { Viewer } from '@photo-sphere-viewer/core';
 import '@photo-sphere-viewer/core/index.css';
 import { CompassPlugin } from '@photo-sphere-viewer/compass-plugin';
 import '@photo-sphere-viewer/compass-plugin/index.css';
-import criciumaStadiumPhoto from '../assets/criciuma.jpg';
+import criciumaStadiumPhoto from '../../public/assets/criciuma.jpg';
 
 const Map = () => {
   const baseUrl = 'https://photo-sphere-viewer-data.netlify.app/assets/';
@@ -88,7 +88,7 @@ const Map = () => {
   return (
     <>
       <div id='viewer' style={{ width: '100vw', height: '100vh' }}></div>;
-      <div id='panel-content' style={{display: 'none'}}>
+      <div id='panel-content' style={{ display: 'none' }}>
         <h1>Estádio Heriberto Hülse</h1>
 
         <p>
