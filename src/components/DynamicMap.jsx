@@ -57,6 +57,7 @@ const DyamicMap = ({ team }) => {
         touchmoveTwoFingers: true,
         mousewheelCtrlKey: false,
         navbar: [
+          'autorotate',
           'zoom',
           'fullscreen',
           'caption',
